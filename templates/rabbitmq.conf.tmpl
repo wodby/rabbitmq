@@ -1,0 +1,7 @@
+listeners.tcp.default = {{ getenv "RABBITMQ_PORT" "5672" }}
+loopback_users.guest = false
+channel_max = {{ getenv "RABBITMQ_CHANNEL_MAX" "2047" }}
+heartbeat = {{ getenv "RABBITMQ_HEARTBEAT" "60" }}
+collect_statistics_interval = {{ getenv "RABBITMQ_COLLECT_STATISTICS_INTERVAL" "5000" }}
+vm_memory_high_watermark.relative = {{ getenv "RABBITMQ_VM_MEMORY_HIGH_WATERMARK_RELATIVE" "0.4" }}
+disk_free_limit.absolute = {{ getenv "RABBITMQ_DISK_FREE_LIMIT" "50MB" }}

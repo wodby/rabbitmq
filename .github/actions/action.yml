@@ -1,0 +1,15 @@
+name: push
+description: combine multi-arch image and push
+inputs:
+  version:
+    description: version
+    required: true
+runs:
+  using: "composite"
+  steps:
+  - name: Build image
+    env:
+      RABBITMQ_VER: ${{ inputs.version }}
+    run: |
+      . $GITHUB_ACTION_PATH/release.sh
+    shell: bash
