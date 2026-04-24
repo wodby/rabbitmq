@@ -10,7 +10,7 @@ on:
       - '*'
 
 env:
-  RABBITMQ42: '4.2.5'
+  RABBITMQ42: '4.2.6'
 
 jobs:
   setup:

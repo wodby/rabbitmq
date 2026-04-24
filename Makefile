@@ -1,6 +1,6 @@
 -include env_make
 
-RABBITMQ_VER ?= 4.2.5
+RABBITMQ_VER ?= 4.2.6
 RABBITMQ_VER_MINOR = $(shell echo "${RABBITMQ_VER}" | grep -oE '^[0-9]+\.[0-9]+')
 
 TAG ?= $(RABBITMQ_VER_MINOR)
