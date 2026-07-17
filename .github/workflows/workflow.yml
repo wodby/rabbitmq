@@ -10,6 +10,7 @@ on:
       - '*'
 
 env:
+  RABBITMQ43: '4.3.2'
   RABBITMQ42: '4.2.8'
 
 jobs:
@@ -22,6 +23,7 @@ jobs:
         run: |
           cat << 'EOF' > versions.json
           [
+            {"key": "rabbitmq43", "version": "${{ env.RABBITMQ43 }}"},
             {"key": "rabbitmq42", "version": "${{ env.RABBITMQ42 }}"}
           ]
           EOF

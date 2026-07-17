@@ -7,7 +7,7 @@
 ## Docker Images
 
 ❗For better reliability we release images with stability tags (
-`wodby/rabbitmq:4.2-X.X.X`) which correspond to [git tags](https://github.com/wodby/rabbitmq/releases). We strongly recommend using images only with stability tags.
+`wodby/rabbitmq:4.3-X.X.X`) which correspond to [git tags](https://github.com/wodby/rabbitmq/releases). We strongly recommend using images only with stability tags.
 
 Overview:
 
@@ -20,8 +20,9 @@ Overview:
 
 Supported tags and respective `Dockerfile` links:
 
+- `4.3` [_(Dockerfile)_]
 - `4.2` [_(Dockerfile)_]
-- stability tags in the form `4.2-X.X.X` [_(Dockerfile)_]
+- stability tags in the form `4.3-X.X.X` or `4.2-X.X.X` [_(Dockerfile)_]
 
 All images built for `linux/amd64` and `linux/arm64`
 

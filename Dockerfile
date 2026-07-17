@@ -1,4 +1,4 @@
-ARG RABBITMQ_VER=4.2.5
+ARG RABBITMQ_VER=4.3.2
 
 FROM rabbitmq:${RABBITMQ_VER}-alpine
 
