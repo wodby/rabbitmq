@@ -11,7 +11,7 @@ on:
 
 env:
   RABBITMQ43: '4.3.3'
-  RABBITMQ42: '4.2.8'
+  RABBITMQ42: '4.2.9'
 
 jobs:
   setup:
