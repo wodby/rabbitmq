@@ -10,7 +10,7 @@ on:
       - '*'
 
 env:
-  RABBITMQ43: '4.3.3'
+  RABBITMQ43: '4.3.4'
   RABBITMQ42: '4.2.9'
 
 jobs:
