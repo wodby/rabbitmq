@@ -1,2 +1,0 @@
-{{- $plugins := split (getenv "RABBITMQ_ENABLED_PLUGINS" "rabbitmq_prometheus") "," -}}
-[{{- range $index, $plugin := $plugins -}}{{- if $index }},{{ end -}}{{ $plugin }}{{- end -}}].

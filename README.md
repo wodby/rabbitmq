@@ -66,7 +66,7 @@ default params values:
 
 - The image wraps the official Alpine RabbitMQ image and keeps the upstream entrypoint.
 - A Wodby config snippet is rendered to `/etc/rabbitmq/conf.d/90-wodby.conf` at startup.
-- Plugin enablement is rendered to `/etc/rabbitmq/enabled_plugins` at startup.
+- Plugin enablement is passed to RabbitMQ through `RABBITMQ_ENABLED_PLUGINS`; RabbitMQ writes the enabled plugins file.
 - The wrapper maps deprecated `RABBITMQ_VM_MEMORY_HIGH_WATERMARK` to `RABBITMQ_VM_MEMORY_HIGH_WATERMARK_RELATIVE`.
 
 ## Deployment

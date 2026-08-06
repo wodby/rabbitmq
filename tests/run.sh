@@ -6,7 +6,13 @@ if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
 
-cid="$(docker run -d -e DEBUG --name "${NAME}" "${IMAGE}")"
+enabled_plugins="rabbitmq_management,rabbitmq_prometheus"
+cid="$(docker run -d \
+    -e DEBUG \
+    -e RABBITMQ_ENABLED_PLUGINS="${enabled_plugins}" \
+    --tmpfs /etc/rabbitmq \
+    --name "${NAME}" \
+    "${IMAGE}")"
 trap "docker rm -vf $cid > /dev/null" EXIT
 
 rabbitmq() {
@@ -24,6 +30,7 @@ docker exec "${NAME}" cat /etc/rabbitmq/conf.d/90-wodby.conf | grep -q 'listener
 echo "OK"
 
 echo -n "Checking enabled plugins... "
+docker exec "${NAME}" cat /etc/rabbitmq/enabled_plugins | grep -q 'rabbitmq_management'
 docker exec "${NAME}" cat /etc/rabbitmq/enabled_plugins | grep -q 'rabbitmq_prometheus'
 echo "OK"
 
