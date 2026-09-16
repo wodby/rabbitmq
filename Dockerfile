@@ -7,7 +7,10 @@ ARG RABBITMQ_VER
 
 ENV RABBITMQ_VER="${RABBITMQ_VER}"
 
-RUN apk add --update --no-cache -t .wodby-rabbitmq-run-deps \
+# Upgrade inherited packages even when their existing versions satisfy dependencies.
+RUN set -ex; \
+    apk upgrade --no-cache; \
+    apk add --update --no-cache -t .wodby-rabbitmq-run-deps \
         make; \
     \
     apk add --update --no-cache -t .wodby-rabbitmq-build-deps \
