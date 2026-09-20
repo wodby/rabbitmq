@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "image": "wodby/rabbitmq",
+  "versions": [
+    {
+      "version": {
+        "env": "RABBITMQ43"
+      },
+      "variants": [
+        {
+          "short": [
+            "{minor}"
+          ],
+          "full": "{version}"
+        }
+      ]
+    },
+    {
+      "version": {
+        "env": "RABBITMQ42"
+      },
+      "variants": [
+        {
+          "short": [
+            "{minor}"
+          ],
+          "full": "{version}"
+        }
+      ]
+    }
+  ]
+}
