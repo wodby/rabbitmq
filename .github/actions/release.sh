@@ -7,8 +7,8 @@ if [[ "${GITHUB_REF}" == refs/heads/main || "${GITHUB_REF}" == refs/heads/master
   tags=("${minor_ver}")
 
   if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
-    stability_tag="${GITHUB_REF##*/}"
-    tags=("${minor_ver}-${stability_tag}")
+    image_revision="${GITHUB_REF##*/}"
+    tags=("${minor_ver}-${image_revision}")
   fi
 
   for tag in "${tags[@]}"; do
