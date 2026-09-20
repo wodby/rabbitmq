@@ -1,6 +1,10 @@
+# check=skip=InvalidDefaultArgInFrom
+
+# The Makefile supplies the required digest-pinned BASE_IMAGE argument.
 ARG RABBITMQ_VER=4.3.2
 
-FROM rabbitmq:${RABBITMQ_VER}-alpine
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
 
 ARG TARGETPLATFORM
 ARG RABBITMQ_VER
