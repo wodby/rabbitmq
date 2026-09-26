@@ -3,7 +3,7 @@
 BASE_IMAGE_REPOSITORY := rabbitmq
 BASE_IMAGE_VERSION_SUFFIX := -alpine
 
-BASE_IMAGE_DIGEST_4.2.9-alpine := sha256:b5c3420a9bf1066be2a01edf5bafbe846fc7a23e9f7cc5b36c04421d1eeb5af0
+BASE_IMAGE_DIGEST_4.2.9-alpine := sha256:1dbd5e0d7c87d44f687866d889cd86b76b5fcaddc64c2b65d367563cbcdff933
 BASE_IMAGE_DIGEST_4.3.6-alpine := sha256:2531fe16e1cb4ec4086d3eaa63118c8f074dd98620d55f022f453a397b18f037
 
 # Fail before building when a version or variant has no reviewed pin.
