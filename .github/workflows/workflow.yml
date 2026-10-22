@@ -11,7 +11,7 @@ on:
       - '!*-r[0-9]*'
 
 env:
-  RABBITMQ43: '4.3.6'
+  RABBITMQ43: '4.3.7'
   RABBITMQ42: '4.2.9'
 
 jobs:
