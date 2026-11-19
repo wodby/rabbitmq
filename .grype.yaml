@@ -1,0 +1,26 @@
+# OpenSSL advisory of 2026-11-10 (https://openssl-library.org/news/secadv/20261110.txt). OpenSSL
+# rates all four issues Low; the fixed releases (3.5.10) are scheduled for 2026-12-01, so no base
+# image can contain the fix yet. None of them is reachable in these images:
+# - CVE-2026-88823, CVE-2026-95692: AES-GCM-SIV only. Erlang/OTP crypto does not offer that cipher.
+# - CVE-2026-95691: OpenSSL's QUIC client. Erlang implements TLS itself and links only libcrypto.
+# - CVE-2026-107496: CMS_encrypt() with an attacker-supplied certificate. Nothing in the image
+#   imports CMS_encrypt(); Erlang's crypto NIF, apk-tools and ssl_client were checked.
+# The rules match only OpenSSL 3.5.9: the one RabbitMQ builds into /opt/openssl (binary) and
+# Alpine's libcrypto3/libssl3 (apk). They stop applying when the base image moves to 3.5.10.
+ignore:
+  - vulnerability: CVE-2026-88823
+    package: {name: openssl, version: 3.5.9, type: binary}
+  - vulnerability: CVE-2026-88823
+    package: {version: 3.5.9-r0, type: apk}
+  - vulnerability: CVE-2026-95691
+    package: {name: openssl, version: 3.5.9, type: binary}
+  - vulnerability: CVE-2026-95691
+    package: {version: 3.5.9-r0, type: apk}
+  - vulnerability: CVE-2026-95692
+    package: {name: openssl, version: 3.5.9, type: binary}
+  - vulnerability: CVE-2026-95692
+    package: {version: 3.5.9-r0, type: apk}
+  - vulnerability: CVE-2026-107496
+    package: {name: openssl, version: 3.5.9, type: binary}
+  - vulnerability: CVE-2026-107496
+    package: {version: 3.5.9-r0, type: apk}
