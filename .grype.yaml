@@ -1,26 +1,55 @@
-# OpenSSL advisory of 2026-11-10 (https://openssl-library.org/news/secadv/20261110.txt). OpenSSL
-# rates all four issues Low; the fixed releases (3.5.10) are scheduled for 2026-12-01, so no base
-# image can contain the fix yet. None of them is reachable in these images:
+# OpenSSL advisories of 2026-11-10, 2026-11-17 and 2026-11-24
+# (https://openssl-library.org/news/vulnerabilities/). OpenSSL rates every issue below Low; the
+# fixed releases (3.5.10) are scheduled for 2026-12-01, so no base image can contain the fix yet.
+# Only the issues the vulnerability database rates High or Critical are listed. None of them is
+# reachable in these images:
 # - CVE-2026-88823, CVE-2026-95692: AES-GCM-SIV only. Erlang/OTP crypto does not offer that cipher.
-# - CVE-2026-95691: OpenSSL's QUIC client. Erlang implements TLS itself and links only libcrypto.
+# - CVE-2026-95691, CVE-2026-107494, CVE-2026-124709: OpenSSL's QUIC stack. Erlang implements TLS
+#   itself and links only libcrypto; only the openssl command-line tool imports a QUIC method.
 # - CVE-2026-107496: CMS_encrypt() with an attacker-supplied certificate. Nothing in the image
 #   imports CMS_encrypt(); Erlang's crypto NIF, apk-tools and ssl_client were checked.
+# - CVE-2026-84786: DANE-enabled TLS clients. Only the openssl command-line tool imports the DANE API.
+# - CVE-2026-121482: CMS/PKCS#7 SignedData verification with CRL checking. Only the openssl
+#   command-line tool imports CMS_verify(), PKCS7_verify() or X509_STORE_add_crl(); Erlang verifies
+#   certificates and CRLs in its own public_key application.
+# - CVE-2026-107493: PEM_X509_INFO_read_bio_ex() appending to a caller-supplied stack. Only the
+#   openssl command-line tool imports it. RabbitMQ and the entrypoint never run that tool.
 # The rules match only OpenSSL 3.5.9: the one RabbitMQ builds into /opt/openssl (binary) and
 # Alpine's libcrypto3/libssl3 (apk). They stop applying when the base image moves to 3.5.10.
 ignore:
   - vulnerability: CVE-2026-88823
     package: {name: openssl, version: 3.5.9, type: binary}
   - vulnerability: CVE-2026-88823
-    package: {version: 3.5.9-r0, type: apk}
+    package: {version: 3.5.9-r1, type: apk}
   - vulnerability: CVE-2026-95691
     package: {name: openssl, version: 3.5.9, type: binary}
   - vulnerability: CVE-2026-95691
-    package: {version: 3.5.9-r0, type: apk}
+    package: {version: 3.5.9-r1, type: apk}
   - vulnerability: CVE-2026-95692
     package: {name: openssl, version: 3.5.9, type: binary}
   - vulnerability: CVE-2026-95692
-    package: {version: 3.5.9-r0, type: apk}
+    package: {version: 3.5.9-r1, type: apk}
   - vulnerability: CVE-2026-107496
     package: {name: openssl, version: 3.5.9, type: binary}
   - vulnerability: CVE-2026-107496
-    package: {version: 3.5.9-r0, type: apk}
+    package: {version: 3.5.9-r1, type: apk}
+  - vulnerability: CVE-2026-84786
+    package: {name: openssl, version: 3.5.9, type: binary}
+  - vulnerability: CVE-2026-84786
+    package: {version: 3.5.9-r1, type: apk}
+  - vulnerability: CVE-2026-107493
+    package: {name: openssl, version: 3.5.9, type: binary}
+  - vulnerability: CVE-2026-107493
+    package: {version: 3.5.9-r1, type: apk}
+  - vulnerability: CVE-2026-107494
+    package: {name: openssl, version: 3.5.9, type: binary}
+  - vulnerability: CVE-2026-107494
+    package: {version: 3.5.9-r1, type: apk}
+  - vulnerability: CVE-2026-121482
+    package: {name: openssl, version: 3.5.9, type: binary}
+  - vulnerability: CVE-2026-121482
+    package: {version: 3.5.9-r1, type: apk}
+  - vulnerability: CVE-2026-124709
+    package: {name: openssl, version: 3.5.9, type: binary}
+  - vulnerability: CVE-2026-124709
+    package: {version: 3.5.9-r1, type: apk}
